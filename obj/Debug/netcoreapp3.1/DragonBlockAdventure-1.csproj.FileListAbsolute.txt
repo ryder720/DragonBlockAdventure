@@ -1,0 +1,11 @@
+/home/ryder/Documents/DragonBlockAdventure/DragonBlockAdventure-1/bin/Debug/netcoreapp3.1/DragonBlockAdventure-1
+/home/ryder/Documents/DragonBlockAdventure/DragonBlockAdventure-1/bin/Debug/netcoreapp3.1/DragonBlockAdventure-1.deps.json
+/home/ryder/Documents/DragonBlockAdventure/DragonBlockAdventure-1/bin/Debug/netcoreapp3.1/DragonBlockAdventure-1.runtimeconfig.json
+/home/ryder/Documents/DragonBlockAdventure/DragonBlockAdventure-1/bin/Debug/netcoreapp3.1/DragonBlockAdventure-1.runtimeconfig.dev.json
+/home/ryder/Documents/DragonBlockAdventure/DragonBlockAdventure-1/bin/Debug/netcoreapp3.1/DragonBlockAdventure-1.dll
+/home/ryder/Documents/DragonBlockAdventure/DragonBlockAdventure-1/bin/Debug/netcoreapp3.1/DragonBlockAdventure-1.pdb
+/home/ryder/Documents/DragonBlockAdventure/DragonBlockAdventure-1/obj/Debug/netcoreapp3.1/DragonBlockAdventure-1.csprojAssemblyReference.cache
+/home/ryder/Documents/DragonBlockAdventure/DragonBlockAdventure-1/obj/Debug/netcoreapp3.1/DragonBlockAdventure-1.AssemblyInfoInputs.cache
+/home/ryder/Documents/DragonBlockAdventure/DragonBlockAdventure-1/obj/Debug/netcoreapp3.1/DragonBlockAdventure-1.AssemblyInfo.cs
+/home/ryder/Documents/DragonBlockAdventure/DragonBlockAdventure-1/obj/Debug/netcoreapp3.1/DragonBlockAdventure-1.dll
+/home/ryder/Documents/DragonBlockAdventure/DragonBlockAdventure-1/obj/Debug/netcoreapp3.1/DragonBlockAdventure-1.pdb
