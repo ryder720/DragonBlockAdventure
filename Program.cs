@@ -86,6 +86,7 @@ namespace DragonBlockAdventure_1
             Player.Name = charName;
             Player.level = 1;
             Player.RestoreCharacter();
+            
         }
 
         static void ShowStats(){
@@ -124,7 +125,7 @@ namespace DragonBlockAdventure_1
         static BATTLE_STATE bState = BATTLE_STATE.NONE;
 
         public static void StartBattle(Character enemy){  // Need to reference enemy in the start battle. I'll learn how to make a seperate file for enemies
-
+            enemy.RestoreCharacter();
         }
 
 
@@ -155,6 +156,17 @@ namespace DragonBlockAdventure_1
             ki = maxKi;
             health = maxHealth;
             stamina = maxStamina;
+        }
+
+        public void initCharacter(String name, int totHealth, int totKi, int totStamina, int spd, int atk, int def, int kiAtk){
+            Name = name;
+            maxHealth = totHealth;
+            maxKi = totKi;
+            maxStamina = totStamina;
+            speed = spd;
+            attack = atk;
+            defence = def;
+            kiAttack = kiAtk;
         }
     }
 
