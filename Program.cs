@@ -43,6 +43,7 @@ namespace DragonBlockAdventure_1
             Console.WriteLine("4.Exit");
 
             int selection = Convert.ToInt16(Console.ReadLine());
+            Console.Clear();
             switch(selection){
                 case 1:
                     Console.WriteLine("Coming Soon!");
@@ -84,7 +85,7 @@ namespace DragonBlockAdventure_1
         }
 
         static void ShowStats(){
-            Console.WriteLine(Player.Name + "LVL:" + Player.level);
+            Console.WriteLine(Player.Name + " LVL:" + Player.level + " BP:" + Player.CalcBattlePower());
             Console.WriteLine("HP: " + Player.health + "/" + Player.maxHealth);
             Console.WriteLine("KI: " + Player.ki + "/" + Player.maxKi);
             Console.WriteLine("STAMINA: " + Player.stamina + "/" + Player.maxStamina);
@@ -134,7 +135,7 @@ namespace DragonBlockAdventure_1
 
         // Formula to calculate battle power. Probably needs a ton of work to balance
         public int CalcBattlePower(){
-            return ((maxStamina+maxKi+(maxHealth/10))/5+speed+attack+defence+kiAttack);
+            return (((maxStamina+maxKi+(maxHealth/10))/5+speed+attack+defence+kiAttack)/5);
         }
 
         public void RestoreCharacter(){
