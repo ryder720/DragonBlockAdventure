@@ -39,8 +39,9 @@ namespace DragonBlockAdventure_1
             Console.WriteLine("\nType in the number of the option you want to select");  // Had a weird bug in vs code where it would show option 1&2 twice before stats
             Console.WriteLine("1.Story");
             Console.WriteLine("2.Training");
-            Console.WriteLine("3.Options");
-            Console.WriteLine("4.Exit");
+            Console.WriteLine("3.Character");
+            Console.WriteLine("4.Options");
+            Console.WriteLine("5.Exit");
 
             int selection = Convert.ToInt16(Console.ReadLine());
             Console.Clear();
@@ -64,12 +65,15 @@ namespace DragonBlockAdventure_1
                     MainMenu();
                     break;
                 case 4:
+                    Console.WriteLine("Coming Soon!");
+                    Console.WriteLine("Press Enter to continue.");
+                    Console.ReadKey();
+                    MainMenu();
+                    break;
+                case 5:
                     Console.WriteLine("Goodbye!");
                     break;
                 default:
-                    Console.WriteLine("Please choose an option");
-                    Console.WriteLine("Press Enter to continue.");
-                    Console.ReadKey();
                     MainMenu();
                     break;
             }
@@ -115,12 +119,21 @@ namespace DragonBlockAdventure_1
         }
 
     }
+
+    public static class Battle{
+        static BATTLE_STATE bState = BATTLE_STATE.NONE;
+
+        public static void StartBattle(Character enemy){  // Need to reference enemy in the start battle. I'll learn how to make a seperate file for enemies
+
+        }
+
+
+    }
     
     // Class for all characters base
     public class Character{
         public string Name = "John Doe";
         public int level;
-        public int battlePower;
         public int stamina;
         public int maxStamina = 10;
         public int ki;
