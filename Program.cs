@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DragonBlockAdventure_1
 {
@@ -20,7 +21,7 @@ namespace DragonBlockAdventure_1
     public static class Game{
         // Create the player character will change if saving implemented
         static Character Player = new Character();
-        static GAME_STATE state = GAME_STATE.NONE;
+        public static GAME_STATE state = GAME_STATE.NONE;
 
 
         // Game Methods
@@ -88,7 +89,7 @@ namespace DragonBlockAdventure_1
                     break;
                 case 6:
                     try{
-                        EnemyList.InitEnemyList();
+                        EnemyList.InitEnemyList();  // Will move this to startup
                         Character wolf = EnemyList.enemyList[0];
                         int wolfbp = wolf.CalcBattlePower();
                         Console.WriteLine(wolfbp);
@@ -149,7 +150,7 @@ namespace DragonBlockAdventure_1
 
     }
 
-    public static class Battle{
+    public static class Battle{  // Going to be another file
         static BATTLE_STATE bState = BATTLE_STATE.NONE;
 
         public static void StartBattle(Character enemy){  // Need to reference enemy in the start battle. I'll learn how to make a seperate file for enemies
@@ -185,9 +186,82 @@ namespace DragonBlockAdventure_1
             health = maxHealth;
             stamina = maxStamina;
         }
+
+
+        // Abilities
+
+        public List<Ability> abilities = new List<Ability>();
+        public void LearnAbility(Ability abil){
+            if(!abilities.Contains(abil)){
+                abilities.Add(abil);
+                Console.WriteLine(Name + " learned: " + abil.name);
+            }
+            else
+                Console.WriteLine(Name + " already knows " + abil.name + ".");
+        }
+        public void UnlearnAbility(Ability abil){
+            if(abilities.Contains(abil)){
+                abilities.Remove(abil);
+                Console.WriteLine(abil + " removed from " + Name + ".");
+            }
+            else
+                Console.WriteLine(Name + " doesn't know " + abil);
+        }
+
+        public void UseAbility(Ability ability, Character enemy){
+            if(Game.state != GAME_STATE.BATTLE || !abilities.Contains(ability))
+                return;
+            // Need to check if you have the move
+            // Can change this to something else to say you don't have ability or that it can't be used
+
+
+            // Need to check if it's multi turn or not 
+            bool multiTurn;
+            switch(ability.turnLimit){
+                case -1:
+                    multiTurn = true;
+                    ability.inUse = true;
+                    break;
+                case 0:
+                    multiTurn = false;
+                    break;
+                default:
+                    multiTurn = true;
+                    ability.inUse = true;
+                    // Need to relay to battle system that a multi turn abil is in use and to set a turn timer for it
+                    // Might need to redo to apply damage or something like that for multi turn attacks or buffs
+                    break;
+            }
+
+            if(multiTurn){
+                health -= ability.healthDrain;
+                ki -= ability.kiDrain;
+                stamina -= ability.stamDrain;
+            }
+            else{
+                health -= ability.healthUse;
+                ki -= ability.kiUse;
+                stamina -= ability.stamUse;
+            }
+            
+
+            if(ability.chanceToHit != 100){  // For chance to miss
+                Random r = new Random();
+                int rInt = r.Next(0, 100); // Random range
+                if(rInt > ability.chanceToHit)
+                    return; // Show a miss text
+            }
+
+            speed += ability.speedModifier;
+            attack += ability.attackModifier;
+            defence += ability.defenceModifier;
+
+            enemy.health -= (ability.damage + attack) - defence;
+        }
+
     }
 
-    // Start of item class. Will probably have a seperate file as a dictionary using this class so may move it.
+    // Start of item class. Will have a seperate file.
     public class Item{
         string name;
 

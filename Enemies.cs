@@ -16,9 +16,9 @@ namespace DragonBlockAdventure_1{
 
             // Wolf Level 1
             Character wolfLVL1 = new Character{Name = "Wolf", level = 1, maxStamina = 10, maxKi = 2, maxHealth = 10, 
-            speed = 8, attack = 8, defence = 1, kiAttack = 0};
+            speed = 8, attack = 8, defence = 1, kiAttack = 0};  // could randomize some things later maybe
             wolfLVL1.RestoreCharacter();
-            enemyList.Add(wolfLVL1);  
+            enemyList.Add(wolfLVL1);
 
 
 
