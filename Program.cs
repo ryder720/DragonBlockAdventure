@@ -34,6 +34,7 @@ namespace DragonBlockAdventure_1
 
         public static void MainMenu(){  // Show main menu screen
             Console.Clear();
+            int selection = 0;
             state = GAME_STATE.MENU;
             ShowStats();
             Console.WriteLine("\nType in the number of the option you want to select");  // Had a weird bug in vs code where it would show option 1&2 twice before stats
@@ -43,8 +44,19 @@ namespace DragonBlockAdventure_1
             Console.WriteLine("4.Options");
             Console.WriteLine("5.Exit");
 
-            int selection = Convert.ToInt16(Console.ReadLine());
+
+            // Might throw this in a while loop instead of calling mainmenu everytime not sure
+            try{
+                selection = Convert.ToInt16(Console.ReadLine());
+            }
+            catch(FormatException e){
+                Console.WriteLine("FormatError: " + e);
+                
+            }
+
+                
             Console.Clear();
+            
             switch(selection){
                 case 1:
                     Console.WriteLine("Coming Soon!");
@@ -72,11 +84,27 @@ namespace DragonBlockAdventure_1
                     break;
                 case 5:
                     Console.WriteLine("Goodbye!");
+                    Environment.Exit(0);
+                    break;
+                case 6:
+                    try{
+                        EnemyList.InitEnemyList();
+                        Character wolf = EnemyList.enemyList[0];
+                        int wolfbp = wolf.CalcBattlePower();
+                        Console.WriteLine(wolfbp);
+                    }
+                    catch(NullReferenceException e){
+                        Console.WriteLine("Unable to grab enemy. Exception: " + e);
+                    }
+                    Console.WriteLine("Press Enter to Continue.");
+                    Console.ReadKey();
+                    MainMenu();
                     break;
                 default:
                     MainMenu();
                     break;
             }
+            
         }
         
         // Player Methods
@@ -156,17 +184,6 @@ namespace DragonBlockAdventure_1
             ki = maxKi;
             health = maxHealth;
             stamina = maxStamina;
-        }
-
-        public void initCharacter(String name, int totHealth, int totKi, int totStamina, int spd, int atk, int def, int kiAtk){
-            Name = name;
-            maxHealth = totHealth;
-            maxKi = totKi;
-            maxStamina = totStamina;
-            speed = spd;
-            attack = atk;
-            defence = def;
-            kiAttack = kiAtk;
         }
     }
 
